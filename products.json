@@ -41,7 +41,7 @@
     {
       "id": "merino-naturwolle",
       "name": "Merino Naturwolle",
-      "price": 30,
+      "price": 40,
       "unit": {
         "quantity": 100,
         "uom": "g",
