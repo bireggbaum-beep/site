@@ -56,7 +56,7 @@
     {
       "id": "merino-sport",
       "name": "Merino Sport",
-      "price": 57.75,
+      "price": 5,
       "unit": {
         "quantity": 100,
         "uom": "g",
@@ -468,6 +468,21 @@
       "category": "fuellmaterial",
       "active": true,
       "order": 28,
+      "aliases": []
+    },
+    {
+      "id": "neues-produkt",
+      "name": "Neues Produkt",
+      "price": 12,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "null",
+        "display": "pro Stück"
+      },
+      "category": "garn",
+      "active": true,
+      "order": 30,
       "aliases": []
     }
   ]
