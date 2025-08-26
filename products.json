@@ -17,7 +17,7 @@
     {
       "id": "merino-naturwolle",
       "name": "Merino Naturwolle",
-      "price": 5.0,
+      "price": 50.0,
       "unit": { "quantity": 100, "uom": "g", "packaging": "Strang", "display": "pro 100g-Strang" },
       "category": "garn",
       "active": true,
