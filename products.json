@@ -51,7 +51,8 @@
       "category": "garn",
       "active": true,
       "order": 1,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "merino-sport",
@@ -66,7 +67,8 @@
       "category": "garn",
       "active": true,
       "order": 2,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "merino-star",
@@ -81,7 +83,8 @@
       "category": "garn",
       "active": true,
       "order": 3,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "biskaya",
@@ -96,7 +99,8 @@
       "category": "garn",
       "active": true,
       "order": 4,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "bel-lino",
@@ -111,7 +115,8 @@
       "category": "garn",
       "active": true,
       "order": 5,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "solaire",
@@ -126,7 +131,8 @@
       "category": "garn",
       "active": true,
       "order": 6,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "soft-cotton",
@@ -141,7 +147,8 @@
       "category": "garn",
       "active": true,
       "order": 7,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "cotton-star",
@@ -156,7 +163,8 @@
       "category": "garn",
       "active": true,
       "order": 8,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "angora-elegance",
@@ -173,7 +181,8 @@
       "order": 9,
       "aliases": [
         "Angora elegance"
-      ]
+      ],
+      "image": ""
     },
     {
       "id": "susiwool",
@@ -188,7 +197,8 @@
       "category": "garn",
       "active": true,
       "order": 10,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "susiline",
@@ -203,7 +213,8 @@
       "category": "garn",
       "active": true,
       "order": 11,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "sockenwolle-mit-seide",
@@ -220,7 +231,8 @@
       "order": 12,
       "aliases": [
         "Sockenwolle + Seide"
-      ]
+      ],
+      "image": ""
     },
     {
       "id": "lama-sockenwolle",
@@ -235,7 +247,8 @@
       "category": "sockenwolle",
       "active": true,
       "order": 13,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "stabilia-sockenwolle",
@@ -250,7 +263,8 @@
       "category": "sockenwolle",
       "active": true,
       "order": 14,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "wollkuegelchen-pack-500g",
@@ -265,7 +279,8 @@
       "category": "fuellmaterial",
       "active": true,
       "order": 15,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "wendemuetze",
@@ -282,7 +297,8 @@
       "order": 16,
       "aliases": [
         "Wende Mütze"
-      ]
+      ],
+      "image": ""
     },
     {
       "id": "lammwoll-muetze",
@@ -299,7 +315,8 @@
       "order": 17,
       "aliases": [
         "Lammwollmütze"
-      ]
+      ],
+      "image": ""
     },
     {
       "id": "wollschal",
@@ -314,7 +331,8 @@
       "category": "accessoires",
       "active": true,
       "order": 18,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "stulpen",
@@ -329,7 +347,8 @@
       "category": "accessoires",
       "active": true,
       "order": 19,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "stirnband",
@@ -344,7 +363,8 @@
       "category": "accessoires",
       "active": true,
       "order": 20,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "lammwolle-stirnband",
@@ -359,7 +379,8 @@
       "category": "accessoires",
       "active": true,
       "order": 21,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "wollsocken-mit-seide",
@@ -376,7 +397,8 @@
       "order": 22,
       "aliases": [
         "Wollsocken + Seide"
-      ]
+      ],
+      "image": ""
     },
     {
       "id": "lamasocken",
@@ -391,7 +413,8 @@
       "category": "accessoires",
       "active": true,
       "order": 23,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "stabilia-arbeitssocken",
@@ -408,7 +431,8 @@
       "order": 24,
       "aliases": [
         "Stabilia Socken"
-      ]
+      ],
+      "image": ""
     },
     {
       "id": "makramee-3mm",
@@ -423,7 +447,8 @@
       "category": "makramee",
       "active": true,
       "order": 25,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "makramee-5mm",
@@ -438,7 +463,8 @@
       "category": "makramee",
       "active": true,
       "order": 26,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "kardenband",
@@ -453,7 +479,8 @@
       "category": "rohwolle",
       "active": true,
       "order": 27,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "wollkuegelchen-500g",
@@ -468,7 +495,8 @@
       "category": "fuellmaterial",
       "active": true,
       "order": 28,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     },
     {
       "id": "neues-produkt",
@@ -483,7 +511,8 @@
       "category": "garn",
       "active": true,
       "order": 30,
-      "aliases": []
+      "aliases": [],
+      "image": ""
     }
   ]
 }
