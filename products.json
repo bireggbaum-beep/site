@@ -41,7 +41,7 @@
     {
       "id": "merino-naturwolle",
       "name": "Merino Naturwolle",
-      "price": 600,
+      "price": 25.55,
       "unit": {
         "quantity": 100,
         "uom": "g",
