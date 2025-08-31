@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Produkte-Datenbank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&amp;family=Crimson+Text:wght@400;600&amp;display=swap" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{--pf-red:#7e1f1f;--ink:#1c1c1c;--muted:#565656;--chip:#ece6e0;--bg:#f6f2ee;--rule:#d9cfc7}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font:400 12px/1.35 "Roboto Condensed",Arial,system-ui;height:100%}
+  
+  .app-layout{display:grid;grid-template-columns:280px 1fr;grid-template-rows:auto 1fr;height:100vh;gap:0 14px;}
+  
+  .header{grid-column:1 / -1;padding:10px 14px;background:#fff;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:14px;}
+  
+  .sidebar{grid-column:1;grid-row:2;background:#fff;border-right:1px solid var(--rule);padding:10px;overflow-y:auto;}
+  
+  .sidebar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+  }
+  .sidebar h2{font:700 11px/1 "Roboto Condensed";letter-spacing:.12em;text-transform:uppercase;color:var(--pf-red);margin:0;}
+  .sidebar-header .checkbox-line{
+    font-size:12px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  
+  .sidebar ul{margin:0;padding:0;list-style:none;}
+  
+  .sidebar li{
+    padding:8px;
+    border:1px solid var(--rule);
+    border-radius:6px;
+    cursor:pointer;
+    margin-bottom:6px;
+    background:#fff;
+    transition:all 0.2s;
+  }
+  .sidebar li:hover{
+    background:var(--chip);
+    transform:translateX(2px);
+  }
+  .sidebar li.active{
+    background:linear-gradient(135deg, #fff 0%, #f1e7e0 100%);
+    border-color:var(--pf-red);
+    border-width:2px;
+    padding:7px;
+  }
+  
+  .product-item-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:4px;
+  }
+  .product-item-name{
+    font-weight:700;
+    font-size:13px;
+    color:var(--ink);
+  }
+  .product-item-status{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    flex-shrink:0;
+  }
+  .product-item-status.active{background:#4caf50;}
+  .product-item-status.inactive{background:#f44336;}
+  
+  .product-item-details{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:11px;
+    gap:6px;
+    flex-wrap:wrap;
+  }
+  .product-item-category{
+    color:var(--muted);
+    background:var(--chip);
+    padding:2px 6px;
+    border-radius:10px;
+    font-size:10px;
+  }
+  .product-item-price{
+    font-weight:700;
+    color:var(--pf-red);
+  }
+  /* Bestand in der Sidebar dezent als Text */
+  .product-item-stock{
+    color:var(--muted);
+    font-size:10px;
+    font-weight:400;
+  }
+  .product-item-stock.low{ color:#a94442; }
+
+  .search-container { 
+    margin-bottom: 12px; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 6px; 
+  }
+  .search-container input, .search-container select {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    font-family: "Roboto Condensed", Arial, system-ui;
+    font-size: 12px;
+    box-sizing: border-box;
+    background-color: #fff;
+  }
+  
+  .new-product-btn{
+    width:100%;
+    background:var(--pf-red);
+    color:#fff;
+    border:0;
+    border-radius:5px;
+    padding:8px 12px;
+    font:700 11px/1 "Roboto Condensed";
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    cursor:pointer;
+    margin-bottom:12px;
+  }
+  .new-product-btn:hover{ background:#9a2727; }
+
+  .main-content{grid-column:2;grid-row:2;padding:14px 0;overflow-y:auto;}
+  
+  #out{background:#fff;border:1px solid var(--rule);max-width:820px;}
+  #placeholder{padding:20px;text-align:center;color:var(--muted);border:2px dashed var(--rule);border-radius:8px;max-width:820px;}
+
+  button, .file-label{background:var(--pf-red);color:#fff;border:0;border-radius:5px;padding:6px 12px;font:700 12px/1 "Roboto Condensed";letter-spacing:.04em;cursor:pointer;display:inline-block;}
+  button.github{background:#2ea043;}
+  button.download{background:#0969da;}
+  button.categories-btn{background:#9c27b0;}
+  input[type="file"]{display:none;}
+
+  .head{background:linear-gradient(#f1e7e0,#eaddd3);border-bottom:2px solid var(--pf-red);padding:10px 12px;position:relative}
+  .name{font:700 22px/1.1 "Roboto Condensed";letter-spacing:.01em;margin:0}
+  .price-per-unit{font:400 16px/1.3 "Roboto Condensed";color:var(--ink);margin:4px 0 6px 0;}
+  .line{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .chip{background:var(--chip);border:1px solid var(--rule);color:#1b1b1b;padding:3px 8px;border-radius:999px;font:700 11px/1 "Roboto Condensed";text-transform:uppercase;letter-spacing:.08em;font-variant:small-caps;}
+  
+  .status-toggle{
+    padding:4px 11px;border-radius:999px;font-weight:700;font-size:11px;text-transform:uppercase;cursor:pointer;transition:all 0.2s;border:1px solid transparent;
+  }
+  .status-toggle.active{background:#4caf50;color:#fff;}
+  .status-toggle.active:hover{background:#45a049;border-color:#388e3c;}
+  .status-toggle.inactive{background:#f44336;color:#fff;}
+  .status-toggle.inactive:hover{background:#da190b;border-color:#c62828;}
+
+  .desc{font-family:"Crimson Text",serif;font-size:15px;line-height:1.4;color:#2a2a2a;margin-top:8px;font-style:italic}
+  
+  .sec{padding:10px 12px;border-top:1px solid var(--rule)}
+  .sec h3{font:700 12px/1 "Roboto Condensed";letter-spacing:.12em;text-transform:uppercase;color:var(--pf-red);margin:0 0 8px}
+  .sec.with-image{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:12px;
+    align-items:start;
+  }
+  .product-image-placeholder{
+    width:120px;height:120px;background:#f0f0f0;border:2px dashed var(--rule);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;overflow:hidden;
+  }
+  .product-image-placeholder img{width:100%;height:100%;object-fit:cover;}
+  .product-image-placeholder .placeholder-text{color:var(--muted);font-size:11px;text-align:center;padding:8px;}
+  .details-content{flex:1;}
+  
+  .row{margin:3px 0;font-size:14px;}
+  .row b{font-size:13px;}
+  .muted{color:var(--muted)}
+
+  .edit-btn, .cat-edit-btn{position:absolute;top:10px;right:12px;font-size:10px;padding:4px 8px;}
+  .cat-edit-btn{right:105px;background:#9c27b0;}
+  
+  .inline-editor, .categories-editor{
+    background:#fff;border:1px solid var(--rule);border-top:2px solid var(--pf-red);margin-top:10px;border-radius:0 0 8px 8px;display:none;
+  }
+  .inline-editor.visible, .categories-editor.visible{display:block;}
+  
+  .editor-header{background:linear-gradient(#f1e7e0,#eaddd3);padding:12px 16px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;}
+  .editor-header h3{margin:0;font:700 16px/1 "Roboto Condensed";color:var(--pf-red);}
+  .editor-body{padding:16px;}
+  .editor-footer{padding:12px 16px;border-top:1px solid var(--rule);background:var(--bg);display:flex;justify-content:flex-end;gap:8px;}
+  
+  .form-section{margin-bottom:20px;}
+  .form-section h4{color:var(--pf-red);border-bottom:1px solid var(--rule);padding-bottom:4px;margin:0 0 12px;font:700 14px/1 "Roboto Condensed";text-transform:uppercase;letter-spacing:0.1em;}
+  .form-row{display:flex;gap:12px;margin-bottom:8px;align-items:flex-end;flex-wrap:wrap;}
+  .form-group{display:flex;flex-direction:column;gap:4px;}
+  .form-group.small{width:80px;}
+  .form-group.medium{width:120px;}
+  .form-group.large{width:200px;}
+  .form-group.full{flex:1;min-width:200px;}
+  .form-group label{font:700 11px/1 "Roboto Condensed";text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);}
+  .form-group input,.form-group select,.form-group textarea{padding:6px 8px;border:1px solid var(--rule);border-radius:4px;font:12px/1.35 "Roboto Condensed";background:#fff;}
+  .form-group textarea{min-height:60px;resize:vertical;}
+  
+  .categories-editor{border-top:2px solid #9c27b0;}
+  .cat-grid{display:grid;grid-template-columns:120px 200px 80px auto;gap:8px;align-items:center;margin-bottom:8px;}
+  .cat-grid.header{font-weight:700;text-transform:uppercase;font-size:11px;color:var(--muted);padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:12px;}
+  .cat-actions{display:flex;gap:4px;}
+  
+  .status-message{
+    position:fixed;top:50px;right:20px;background:#333;color:#fff;padding:12px 16px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.3);z-index:1000;opacity:0;transform:translateY(-20px);transition:all 0.3s ease;
+  }
+  .status-message.show{opacity:1;transform:translateY(0);}
+  .status-message.success{background:#4caf50;}
+  .status-message.error{background:#f44336;}
+  .status-message.warning{background:#ff9800;}
+
+  /* Bestand-Steuerung inline in der Kopfzeile */
+  .stock-inline{display:flex;align-items:center;gap:6px;margin-left:4px;}
+  .stock-inline .label{font:700 10px/1 "Roboto Condensed";color:var(--muted);text-transform:uppercase;letter-spacing:.08em;}
+  .stock-btn{padding:2px 8px;border-radius:6px;border:1px solid var(--rule);background:#fff;cursor:pointer;color:#1c1c1c;}
+  .stock-input{width:60px;padding:4px 6px;border:1px solid var(--rule);border-radius:4px;font:700 12px/1 "Roboto Condensed";}
+</style>
+</head>
+<body>
+
+<div class="app-layout">
+  <header class="header">
+    <label for="file-loader" class="file-label">JSON laden</label>
+    <input type="file" id="file-loader" accept=".json">
+    <button id="btn-load-remote">Vom Server laden</button>
+    <button id="btn-download" class="download">Download JSON</button>
+    <button id="btn-push" class="github">Push to GitHub</button>
+    <span id="file-name" class="muted" style="margin-left:auto;">products.json</span>
+  </header>
+
+  <aside class="sidebar">
+    <div class="search-container">
+      <input type="text" id="search-name" placeholder="Nach Name/ID suchen...">
+      <select id="search-category">
+        <option value="">Alle Kategorien</option>
+      </select>
+    </div>
+
+    <button class="new-product-btn" id="btn-new-product">+ Neues Produkt</button>
+
+    <div class="sidebar-header">
+      <h2>Produkte</h2>
+      <div class="checkbox-line">
+        <input type="checkbox" id="filter-active" checked>
+        <label for="filter-active">Nur aktive</label>
+      </div>
+    </div>
+    
+    <ul id="product-list"></ul>
+  </aside>
+
+  <main class="main-content">
+    <div id="out"><div id="placeholder"><p>Bitte wählen Sie ein Produkt aus der Liste links.</p></div></div>
+  </main>
+</div>
+
+<div class="status-message" id="status-message"></div>
+
+<script>
+/* ======================= Konfiguration ======================= */
+const REMOTE_URL = "https://raw.githubusercontent.com/Nicolinus/Artikel_Surplus/refs/heads/main/products.json";
+const GH_TOKEN = "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";
+
+/* ======================= State & Daten ======================= */
+let productData = {
+  meta: { version: "1", ausgabedatum: "", currency: "EUR", vat_included: true },
+  categories: [],
+  products: []
+};
+let currentProductId = null;
+let editorVisible = false;
+let categoriesVisible = false;
+
+/* ======================= Wichtige Helper-Funktionen ======================= */
+
+// Base64-Encoding für große Dateien
+function base64EncodeUTF8(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  const chunkSize = 0x8000;
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    binary += String.fromCharCode(...bytes.subarray(i, Math.min(i + chunkSize, bytes.length)));
+  }
+  return btoa(binary);
+}
+
+// GitHub Raw URL parsen
+function parseRepoInfoFromRaw(rawUrl) {
+  try {
+    const u = new URL(rawUrl);
+    const p = u.pathname.split("/").filter(Boolean);
+    let branch = p[2], rest = p.slice(3);
+    if (branch === "refs" && p[3] === "heads") {
+      branch = p[4];
+      rest = p.slice(5);
+    }
+    return { owner: p[0], repo: p[1], branch, path: rest.join("/") || "products.json" };
+  } catch { return null; }
+}
+
+/* ======================= Hilfsfunktionen ======================= */
+const $ = s => document.querySelector(s);
+
+function showStatus(message, type = 'info') {
+  const statusEl = $('#status-message');
+  statusEl.textContent = message;
+  statusEl.className = 'status-message show ' + type;
+  setTimeout(() => statusEl.classList.remove('show'), 3000);
+}
+
+function slugify(text) {
+  return text.toString().toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+
+function generateProductId(name) {
+  let baseId = slugify(name), id = baseId, counter = 1;
+  while (productData.products.some(p => p.id === id)) { id = `${baseId}-${counter}`; counter++; }
+  return id;
+}
+
+function getNextOrder() {
+  const maxOrder = Math.max(0, ...productData.products.map(p => p.order || 0));
+  return Math.floor(maxOrder / 10) * 10 + 10;
+}
+
+/* ======================= Daten laden/speichern ======================= */
+async function loadFromRemote() {
+  try {
+    const response = await fetch(REMOTE_URL, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    
+    productData = {
+      meta: {
+        version: data.meta?.version || "1",
+        ausgabedatum: data.meta?.ausgabedatum || "",
+        currency: data.meta?.currency || "EUR",
+        vat_included: data.meta?.vat_included !== false
+      },
+      categories: (data.categories || []).map(c => ({
+        id: c.id,
+        name: c.name,
+        order: Number(c.order) || 0
+      })),
+      products: (data.products || []).map(p => ({
+        id: p.id,
+        name: p.name,
+        price: Number(p.price) || 0,
+        unit: p.unit ? {
+          quantity: p.unit.quantity != null ? Number(p.unit.quantity) : null,
+          uom: p.unit.uom || "",
+          packaging: p.unit.packaging || null,
+          display: p.unit.display || ""
+        } : { quantity: null, uom: "", packaging: null, display: "" },
+        category: p.category || "",
+        active: p.active !== false,
+        order: Number(p.order) || 0,
+        aliases: Array.isArray(p.aliases) ? p.aliases : [],
+        image: p.image || "",
+        available: Number(p.available ?? p.stock ?? 0) || 0
+      }))
+    };
+    
+    currentProductId = null;
+    populateCategoryFilters();
+    filterAndPopulateSidebar();
+    $("#out").innerHTML = `<div id="placeholder"><p>Daten geladen. Bitte wählen Sie ein Produkt aus der Liste links.</p></div>`;
+    showStatus('Daten erfolgreich vom Server geladen', 'success');
+  } catch (err) {
+    showStatus(`Fehler beim Laden: ${err.message}`, 'error');
+  }
+}
+
+function buildJsonForSave() {
+  return {
+    meta: productData.meta,
+    categories: productData.categories.sort((a, b) => (a.order || 0) - (b.order || 0)),
+    products: productData.products.sort((a, b) => (a.order || 0) - (b.order || 0))
+      .map(p => ({
+        id: p.id,
+        name: p.name,
+        price: p.price,
+        unit: p.unit,
+        category: p.category,
+        active: p.active,
+        order: p.order,
+        aliases: p.aliases,
+        image: p.image || "",
+        available: Number(p.available) || 0
+      }))
+  };
+}
+
+function downloadJson() {
+  const dataStr = JSON.stringify(buildJsonForSave(), null, 2);
+  const blob = new Blob([dataStr], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'products.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  showStatus('JSON-Datei heruntergeladen', 'success');
+}
+
+async function pushToGitHub() {
+  if (!GH_TOKEN) { showStatus('GitHub Token nicht konfiguriert', 'error'); alert('Kein Token gesetzt.'); return; }
+  try {
+    showStatus('Push to GitHub...', 'info');
+    const info = parseRepoInfoFromRaw(REMOTE_URL);
+    if (!info) throw new Error('Repository-Info konnte nicht aus URL ermittelt werden');
+
+    const jsonContent = JSON.stringify(buildJsonForSave(), null, 2);
+    const base64Content = base64EncodeUTF8(jsonContent);
+    const apiUrl = `https://api.github.com/repos/${info.owner}/${info.repo}/contents/${encodeURIComponent(info.path)}`;
+
+    let sha = '';
+    const getResponse = await fetch(`${apiUrl}?ref=${encodeURIComponent(info.branch)}`, {
+      headers: { 'Accept': 'application/vnd.github+json', 'Authorization': `Bearer ${GH_TOKEN}` }
+    });
+    if (getResponse.status === 200) { const fileData = await getResponse.json(); sha = fileData.sha; }
+    else if (getResponse.status !== 404) { throw new Error(`Fehler beim Abrufen der Datei: ${getResponse.status}`); }
+
+    const updateBody = { message: `Update ${info.path} via Produkte-Editor`, content: base64Content, branch: info.branch };
+    if (sha) updateBody.sha = sha;
+
+    const updateResponse = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: { 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json', 'Authorization': `Bearer ${GH_TOKEN}` },
+      body: JSON.stringify(updateBody)
+    });
+
+    if (updateResponse.ok) showStatus('Erfolgreich zu GitHub gepusht!', 'success');
+    else {
+      let msg = `GitHub API Fehler: ${updateResponse.status}`;
+      if (updateResponse.status === 401) msg = 'Authentifizierung fehlgeschlagen. Token prüfen.';
+      if (updateResponse.status === 403) msg = 'Keine Berechtigung. Token-Rechte prüfen.';
+      if (updateResponse.status === 404) msg = 'Repository oder Branch nicht gefunden.';
+      if (updateResponse.status === 409) msg = 'Konflikt - Datei wurde geändert.';
+      if (updateResponse.status === 422) msg = 'Unprocessable Entity - SHA/Branch prüfen.';
+      throw new Error(msg);
+    }
+  } catch (err) {
+    showStatus(`Push fehlgeschlagen: ${err.message}`, 'error');
+    alert(`Push fehlgeschlagen:\n\n${err.message}\n\nDetails in der Browser-Konsole (F12).`);
+  }
+}
+
+/* ======================= UI Rendering ======================= */
+function populateCategoryFilters() {
+  const categorySelect = $("#search-category");
+  const categoryOptions = productData.categories
+    .sort((a, b) => (a.order || 0) - (b.order || 0))
+    .map(cat => `<option value="${cat.id}">${cat.name}</option>`)
+    .join('');
+  categorySelect.innerHTML = '<option value="">Alle Kategorien</option>' + categoryOptions;
+}
+
+function filterAndPopulateSidebar() {
+  const nameFilter = ($("#search-name").value || "").toLowerCase();
+  const categoryFilter = $("#search-category").value;
+  const activeOnly = $("#filter-active").checked;
+
+  const filteredProducts = productData.products.filter(product => {
+    const nameMatch = (product.name || "").toLowerCase().includes(nameFilter) || 
+                      (product.id || "").toLowerCase().includes(nameFilter) ||
+                      (product.aliases || []).some(a => a.toLowerCase().includes(nameFilter));
+    const categoryMatch = !categoryFilter || product.category === categoryFilter;
+    const activeMatch = !activeOnly || product.active !== false;
+    return nameMatch && categoryMatch && activeMatch;
+  });
+
+  populateSidebar(filteredProducts);
+}
+
+function populateSidebar(products) {
+  const list = $("#product-list");
+  list.innerHTML = "";
+  
+  const categoryMap = {};
+  productData.categories.forEach(cat => { categoryMap[cat.id] = cat.name; });
+  
+  products.sort((a, b) => (a.order || 0) - (b.order || 0)).forEach(product => {
+    const li = document.createElement("li");
+    li.dataset.id = product.id;
+    if (currentProductId === product.id) li.classList.add("active");
+      
+    const categoryName = categoryMap[product.category] || "Keine";
+    const isActive = product.active !== false;
+    const stockVal = product.available ?? 0;
+      
+    li.innerHTML = `
+      <div class="product-item-header">
+        <span class="product-item-name">${product.name || `Produkt ${product.id}`}</span>
+        <span class="product-item-status ${isActive ? 'active' : 'inactive'}"></span>
+      </div>
+      <div class="product-item-details">
+        <span class="product-item-category">${categoryName}</span>
+        <span style="flex:1"></span>
+        <span class="product-item-price">${(product.price || 0).toFixed(2)} €</span>
+        <span class="product-item-stock ${stockVal <= 0 ? 'low' : ''}">Best. ${stockVal}</span>
+      </div>
+    `;
+      
+    li.addEventListener("click", () => {
+      document.querySelectorAll("#product-list li").forEach(item => item.classList.remove("active"));
+      li.classList.add("active");
+      currentProductId = product.id;
+      renderProductCard(product);
+      editorVisible = false;
+      categoriesVisible = false;
+      const editor = document.querySelector("#inline-editor");
+      const catEditor = document.querySelector("#categories-editor");
+      if (editor) editor.classList.remove("visible");
+      if (catEditor) catEditor.classList.remove("visible");
+    });
+      
+    list.appendChild(li);
+  });
+}
+
+function renderProductCard(product) {
+  const categoryName = productData.categories.find(c => c.id === product.category)?.name || "Keine Kategorie";
+  const isActive = product.active !== false;
+  const statusClass = isActive ? 'status-toggle active' : 'status-toggle inactive';
+  const statusText = isActive ? 'Aktiv' : 'Inaktiv';
+  const pricePerUnit = product.unit?.display 
+    ? `${(product.price || 0).toFixed(2)} € ${product.unit.display}`
+    : `${(product.price || 0).toFixed(2)} € pro Stück`;
+  const imageUrl = product.image || '';
+  const stockVal = product.available ?? 0;
+
+  $("#out").innerHTML = `
+    <div class="head">
+      <button class="cat-edit-btn">Kategorien</button>
+      <button class="edit-btn">Bearbeiten</button>
+      <div class="name">${product.name || ""}</div>
+      <div class="price-per-unit">${pricePerUnit}</div>
+      <div class="line">
+        <span class="chip">${categoryName}</span>
+        <span class="${statusClass}" id="status-toggle" data-active="${isActive}">${statusText}</span>
+        <div class="stock-inline">
+          <span class="label">Bestand</span>
+          <button id="stock-dec" class="stock-btn" title="–1">-</button>
+          <input type="number" id="stock-input" class="stock-input" min="0" step="1" value="${stockVal}">
+          <button id="stock-inc" class="stock-btn" title="+1">+</button>
+          <button id="stock-zero" class="stock-btn" title="Auf 0 setzen">0</button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="sec with-image">
+      <div class="product-image-placeholder" id="image-placeholder">
+        ${imageUrl ? `<img src="${imageUrl}" alt="${product.name}">` : `<div class="placeholder-text">Klicken für<br>Bild-URL</div>`}
+      </div>
+      <div class="details-content">
+        <h3>Details</h3>
+        <div class="row"><b>Produkt-ID:</b> ${product.id || ""}</div>
+        <div class="row"><b>Preis:</b> ${(product.price || 0).toFixed(2)} € ${productData.meta.vat_included ? "(inkl. MwSt.)" : "(exkl. MwSt.)"}</div>
+        ${product.unit ? `
+          <div class="row"><b>Einheit:</b> ${product.unit.quantity || ""} ${product.unit.uom || ""} ${product.unit.packaging ? `(${product.unit.packaging})` : ""}</div>
+        ` : ""}
+        <div class="row"><b>Sortierung:</b> ${product.order || 0}</div>
+        ${product.aliases && product.aliases.length > 0 ? `<div class="row"><b>Aliase:</b> ${product.aliases.join(", ")}</div>` : ""}
+      </div>
+    </div>
+    
+    <div class="inline-editor" id="inline-editor">
+      <div class="editor-header">
+        <h3>Produkt bearbeiten</h3>
+        <button class="close-btn">Schließen</button>
+      </div>
+      <div class="editor-body">
+        ${renderEditorForm(product)}
+      </div>
+      <div class="editor-footer">
+        <button class="save-btn">Speichern</button>
+        <button class="delete-btn" style="background:var(--muted);margin-right:auto;">Löschen</button>
+        <button class="cancel-btn">Abbrechen</button>
+      </div>
+    </div>
+    
+    <div class="categories-editor" id="categories-editor">
+      <div class="editor-header">
+        <h3>Kategorien verwalten</h3>
+        <button class="close-cat-btn">Schließen</button>
+      </div>
+      <div class="editor-body">
+        ${renderCategoriesEditor()}
+      </div>
+    </div>
+  `;
+
+  // Events
+  document.querySelector("#image-placeholder").addEventListener("click", () => {
+    const newUrl = prompt("Bild-URL eingeben:", product.image || "");
+    if (newUrl !== null) { product.image = newUrl; renderProductCard(product); showStatus('Bild-URL aktualisiert', 'success'); }
+  });
+  
+  document.querySelector("#status-toggle").addEventListener("click", toggleProductStatus);
+  document.querySelector(".edit-btn").addEventListener("click", toggleEditor);
+  document.querySelector(".cat-edit-btn").addEventListener("click", toggleCategoriesEditor);
+  document.querySelector(".close-btn").addEventListener("click", toggleEditor);
+  document.querySelector(".close-cat-btn").addEventListener("click", toggleCategoriesEditor);
+  document.querySelector(".cancel-btn").addEventListener("click", toggleEditor);
+  document.querySelector(".save-btn").addEventListener("click", saveProduct);
+  document.querySelector(".delete-btn").addEventListener("click", deleteProduct);
+
+  document.querySelectorAll(".cat-remove").forEach(btn => {
+    btn.addEventListener("click", (e) => removeCategoryAtIndex(parseInt(e.target.dataset.index)));
+  });
+  const addCatBtn = document.querySelector("#add-category-btn");
+  if (addCatBtn) addCatBtn.addEventListener("click", addCategory);
+
+  // Bestand-Controls
+  const stockInput = document.querySelector("#stock-input");
+  const updateStockUI = () => {
+    const val = Math.max(0, parseInt(stockInput.value || "0", 10) || 0);
+    product.available = val;
+
+    // Sidebar-Text aktualisieren
+    const li = document.querySelector(`#product-list li[data-id="${product.id}"]`);
+    if (li) {
+      const stockEl = li.querySelector(".product-item-stock");
+      if (stockEl) { stockEl.textContent = `Best. ${val}`; stockEl.classList.toggle("low", val === 0); }
+    }
+
+    // Editor-Feld synchronisieren
+    const editAvail = document.querySelector("#edit-available");
+    if (editAvail) editAvail.value = val;
+  };
+
+  document.querySelector("#stock-inc").addEventListener("click", (e) => {
+    const step = e.shiftKey ? 10 : 1;
+    stockInput.value = (parseInt(stockInput.value || "0", 10) || 0) + step;
+    updateStockUI();
+  });
+  document.querySelector("#stock-dec").addEventListener("click", (e) => {
+    const step = e.shiftKey ? 10 : 1;
+    stockInput.value = Math.max(0, (parseInt(stockInput.value || "0", 10) || 0) - step);
+    updateStockUI();
+  });
+  document.querySelector("#stock-zero").addEventListener("click", () => { stockInput.value = 0; updateStockUI(); });
+  stockInput.addEventListener("change", () => { updateStockUI(); showStatus('Bestand aktualisiert', 'success'); });
+}
+
+function toggleProductStatus(e) {
+  const product = productData.products.find(p => p.id === currentProductId);
+  if (!product) return;
+  product.active = !product.active;
+  const toggle = e.target;
+  const isActive = product.active;
+  toggle.className = isActive ? 'status-toggle active' : 'status-toggle inactive';
+  toggle.textContent = isActive ? 'Aktiv' : 'Inaktiv';
+  toggle.dataset.active = isActive;
+  filterAndPopulateSidebar();
+  showStatus(`Produkt ${isActive ? 'aktiviert' : 'deaktiviert'}`, 'success');
+}
+
+function toggleEditor() {
+  editorVisible = !editorVisible;
+  const editor = document.querySelector("#inline-editor");
+  if (editorVisible) { editor.classList.add("visible"); populateEditor(productData.products.find(p => p.id === currentProductId)); }
+  else { editor.classList.remove("visible"); }
+}
+
+function toggleCategoriesEditor() {
+  categoriesVisible = !categoriesVisible;
+  const editor = document.querySelector("#categories-editor");
+  if (categoriesVisible) editor.classList.add("visible");
+  else editor.classList.remove("visible");
+}
+
+function renderEditorForm(product) {
+  const categoryOptions = productData.categories
+    .sort((a, b) => (a.order || 0) - (b.order || 0))
+    .map(cat => `<option value="${cat.id}" ${product.category === cat.id ? 'selected' : ''}>${cat.name}</option>`)
+    .join('');
+
+  return `
+    <div class="form-section">
+      <h4>Allgemein</h4>
+      <div class="form-row">
+        <div class="form-group full">
+          <label for="edit-name">Name</label>
+          <input type="text" id="edit-name" value="${product.name || ''}">
+        </div>
+        <div class="form-group medium">
+          <label for="edit-price">Preis (€)</label>
+          <input type="number" id="edit-price" value="${product.price || 0}" step="0.01">
+        </div>
+        <div class="form-group medium">
+          <label for="edit-available">Bestand</label>
+          <input type="number" id="edit-available" value="${product.available ?? 0}" step="1" min="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group large">
+          <label for="edit-category">Kategorie</label>
+          <select id="edit-category">
+            <option value="">Keine Kategorie</option>
+            ${categoryOptions}
+          </select>
+        </div>
+        <div class="form-group small">
+          <label for="edit-order">Sortierung</label>
+          <input type="number" id="edit-order" value="${product.order || 0}">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label for="edit-image">Bild-URL</label>
+          <input type="text" id="edit-image" value="${product.image || ''}" placeholder="https://example.com/bild.jpg">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h4>Einheit & Anzeige</h4>
+      <div class="form-row">
+        <div class="form-group full">
+          <label for="edit-display">Anzeige-Text</label>
+          <input type="text" id="edit-display" value="${product.unit?.display || ''}" placeholder="z.B. pro 100g-Strang">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group small">
+          <label for="edit-quantity">Menge</label>
+          <input type="number" id="edit-quantity" value="${product.unit?.quantity || ''}">
+        </div>
+        <div class="form-group medium">
+          <label for="edit-uom">Einheit</label>
+          <input type="text" id="edit-uom" value="${product.unit?.uom || ''}" placeholder="g, Stück, ml">
+        </div>
+        <div class="form-group large">
+          <label for="edit-packaging">Verpackung</label>
+          <input type="text" id="edit-packaging" value="${product.unit?.packaging || ''}" placeholder="Knäuel, Pack, Dose">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h4>Erweitert</h4>
+      <div class="form-row">
+        <div class="form-group large">
+          <label for="edit-id">Produkt-ID</label>
+          <input type="text" id="edit-id" value="${product.id || ''}" readonly style="background:#f0f0f0;">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group full">
+          <label for="edit-aliases">Aliase (Komma-getrennt)</label>
+          <textarea id="edit-aliases" rows="2">${(product.aliases || []).join(', ')}</textarea>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderCategoriesEditor() {
+  let html = `
+    <div class="cat-grid header">
+      <div>ID</div><div>Name</div><div>Sortierung</div><div>Aktionen</div>
+    </div>
+  `;
+  productData.categories.sort((a, b) => (a.order || 0) - (b.order || 0)).forEach((cat, index) => {
+    html += `
+      <div class="cat-grid">
+        <div>${cat.id}</div>
+        <div>${cat.name}</div>
+        <div>${cat.order || 0}</div>
+        <div class="cat-actions"><button class="cat-remove" data-index="${index}">Entfernen</button></div>
+      </div>
+    `;
+  });
+  html += `
+    <div class="cat-grid" style="margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);">
+      <input type="text" id="new-cat-id" placeholder="neue-id">
+      <input type="text" id="new-cat-name" placeholder="Neuer Name">
+      <input type="number" id="new-cat-order" placeholder="0">
+      <button id="add-category-btn">Hinzufügen</button>
+    </div>
+  `;
+  return html;
+}
+
+function populateEditor(product) {
+  if (!product) return;
+  document.querySelector("#edit-name").value = product.name || "";
+  document.querySelector("#edit-price").value = product.price || 0;
+  document.querySelector("#edit-available").value = product.available ?? 0;
+  document.querySelector("#edit-category").value = product.category || "";
+  document.querySelector("#edit-order").value = product.order || 0;
+  document.querySelector("#edit-image").value = product.image || "";
+  document.querySelector("#edit-display").value = product.unit?.display || "";
+  document.querySelector("#edit-quantity").value = product.unit?.quantity || "";
+  document.querySelector("#edit-uom").value = product.unit?.uom || "";
+  document.querySelector("#edit-packaging").value = product.unit?.packaging || "";
+  document.querySelector("#edit-id").value = product.id || "";
+  document.querySelector("#edit-aliases").value = (product.aliases || []).join(", ");
+}
+
+function saveProduct() {
+  const product = productData.products.find(p => p.id === currentProductId);
+  if (!product) return;
+
+  product.name = document.querySelector("#edit-name").value;
+  product.price = parseFloat(document.querySelector("#edit-price").value) || 0;
+  product.available = Math.max(0, parseInt(document.querySelector("#edit-available").value, 10) || 0);
+  product.category = document.querySelector("#edit-category").value;
+  product.order = parseInt(document.querySelector("#edit-order").value) || 0;
+  product.image = document.querySelector("#edit-image").value;
+
+  if (!product.unit) product.unit = {};
+  product.unit.display = document.querySelector("#edit-display").value;
+  product.unit.quantity = document.querySelector("#edit-quantity").value ? parseInt(document.querySelector("#edit-quantity").value) : null;
+  product.unit.uom = document.querySelector("#edit-uom").value;
+  product.unit.packaging = document.querySelector("#edit-packaging").value || null;
+
+  const aliases = document.querySelector("#edit-aliases").value;
+  product.aliases = aliases ? aliases.split(",").map(a => a.trim()).filter(a => a) : [];
+
+  renderProductCard(product);
+  filterAndPopulateSidebar();
+  toggleEditor();
+  showStatus('Produkt gespeichert', 'success');
+}
+
+function deleteProduct() {
+  if (!confirm('Dieses Produkt wirklich löschen?')) return;
+  productData.products = productData.products.filter(p => p.id !== currentProductId);
+  currentProductId = null;
+  filterAndPopulateSidebar();
+  $("#out").innerHTML = `<div id="placeholder"><p>Produkt gelöscht. Bitte wählen Sie ein anderes Produkt.</p></div>`;
+  showStatus('Produkt gelöscht', 'warning');
+}
+
+function addCategory() {
+  const id = document.querySelector("#new-cat-id").value.trim() || slugify(document.querySelector("#new-cat-name").value);
+  const name = document.querySelector("#new-cat-name").value.trim();
+  const order = parseInt(document.querySelector("#new-cat-order").value) || 0;
+
+  if (!name) { showStatus('Bitte einen Kategorienamen eingeben', 'error'); return; }
+  if (productData.categories.some(c => c.id === id)) { showStatus('Diese Kategorie-ID existiert bereits', 'error'); return; }
+
+  productData.categories.push({ id, name, order });
+  populateCategoryFilters();
+  renderProductCard(productData.products.find(p => p.id === currentProductId));
+  showStatus('Kategorie hinzugefügt', 'success');
+  document.querySelector("#new-cat-id").value = "";
+  document.querySelector("#new-cat-name").value = "";
+  document.querySelector("#new-cat-order").value = "";
+}
+
+function removeCategoryAtIndex(index) {
+  const category = productData.categories[index];
+  const productsUsingCategory = productData.products.filter(p => p.category === category.id).length;
+  if (productsUsingCategory > 0) {
+    if (!confirm(`${productsUsingCategory} Produkt(e) nutzen diese Kategorie. Trotzdem löschen?`)) return;
+  }
+  productData.categories.splice(index, 1);
+  populateCategoryFilters();
+  renderProductCard(productData.products.find(p => p.id === currentProductId));
+  showStatus('Kategorie entfernt', 'warning');
+}
+
+/* ======================= Neues Produkt ======================= */
+function createNewProduct() {
+  const name = "Neues Produkt";
+  const newProduct = {
+    id: generateProductId(name),
+    name,
+    price: 0,
+    unit: { quantity: 1, uom: "Stück", packaging: null, display: "pro Stück" },
+    category: "",
+    active: true,
+    order: getNextOrder(),
+    aliases: [],
+    image: "",
+    available: 0
+  };
+
+  productData.products.push(newProduct);
+  currentProductId = newProduct.id;
+  filterAndPopulateSidebar();
+  renderProductCard(newProduct);
+  
+  editorVisible = true;
+  const editor = document.querySelector("#inline-editor");
+  if (editor) {
+    editor.classList.add("visible");
+    populateEditor(newProduct);
+    setTimeout(() => { const nameField = document.querySelector("#edit-name"); if (nameField) { nameField.select(); nameField.focus(); } }, 100);
+  }
+  showStatus('Neues Produkt angelegt - bitte bearbeiten', 'success');
+}
+
+/* ======================= Event Listener ======================= */
+document.addEventListener("DOMContentLoaded", () => {
+  loadFromRemote();
+
+  $("#btn-load-remote").addEventListener("click", loadFromRemote);
+  $("#btn-download").addEventListener("click", downloadJson);
+  $("#btn-push").addEventListener("click", pushToGitHub);
+  
+  $("#file-loader").addEventListener("change", async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    try {
+      const text = await file.text();
+      const data = JSON.parse(text);
+      productData = data;
+      currentProductId = null;
+      populateCategoryFilters();
+      filterAndPopulateSidebar();
+      $("#out").innerHTML = `<div id="placeholder"><p>Datei geladen. Bitte wählen Sie ein Produkt aus der Liste links.</p></div>`;
+      $("#file-name").textContent = file.name;
+      showStatus('Datei erfolgreich geladen', 'success');
+    } catch (err) {
+      showStatus(`Fehler beim Laden der Datei: ${err.message}`, 'error');
+    }
+  });
+
+  $("#search-name").addEventListener("input", filterAndPopulateSidebar);
+  $("#search-category").addEventListener("change", filterAndPopulateSidebar);
+  $("#filter-active").addEventListener("change", filterAndPopulateSidebar);
+
+  $("#btn-new-product").addEventListener("click", createNewProduct);
+});
+</script>
+
+</body>
+</html>
