@@ -52,7 +52,7 @@
       "active": true,
       "order": 1,
       "aliases": [],
-      "image": "merino-naturwolle.jpg",
+      "image": "https://github.com/bireggbaum-beep/site/blob/main/wolle_placeholder.jpg?raw=true",
       "available": 7
     },
     {
@@ -69,7 +69,7 @@
       "active": true,
       "order": 2,
       "aliases": [],
-      "image": "",
+      "image": "merino-sport.jpg",
       "available": 4
     },
     {
