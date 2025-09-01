@@ -92,7 +92,7 @@
     {
       "id": "biskaya",
       "name": "Biskaya",
-      "price": 2.2,
+      "price": 22.2,
       "unit": {
         "quantity": 50,
         "uom": "g",
@@ -104,7 +104,7 @@
       "order": 4,
       "aliases": [],
       "image": "biskaya.jpg",
-      "available": 0
+      "available": 5
     },
     {
       "id": "bel-lino",
