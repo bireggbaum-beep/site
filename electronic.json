@@ -1,1 +1,493 @@
+{
+  "meta": {
+    "version": "1",
+    "ausgabedatum": "2024-12-15",
+    "currency": "EUR",
+    "vat_included": true
+  },
+  "categories": [
+    {
+      "id": "notebooks",
+      "name": "Notebooks",
+      "order": 1
+    },
+    {
+      "id": "smartphones",
+      "name": "Smartphones",
+      "order": 2
+    },
+    {
+      "id": "zubehoer",
+      "name": "Zubehör",
+      "order": 3
+    },
+    {
+      "id": "monitore",
+      "name": "Monitore",
+      "order": 4
+    },
+    {
+      "id": "audio",
+      "name": "Audio",
+      "order": 5
+    },
+    {
+      "id": "speicher",
+      "name": "Speicher",
+      "order": 6
+    }
+  ],
+  "products": [
+    {
+      "id": "lenovo-thinkpad-x1",
+      "name": "Lenovo ThinkPad X1 Carbon",
+      "price": 1299.99,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "notebooks",
+      "active": true,
+      "order": 1,
+      "aliases": ["ThinkPad X1", "X1 Carbon"],
+      "variants": [
+        {
+          "name": "i5/8GB/256GB",
+          "image": "thinkpad-x1-i5.jpg",
+          "available": 5
+        },
+        {
+          "name": "i7/16GB/512GB",
+          "image": "thinkpad-x1-i7.jpg",
+          "available": 3
+        },
+        {
+          "name": "i7/32GB/1TB",
+          "image": "thinkpad-x1-i7-pro.jpg",
+          "available": 2
+        }
+      ]
+    },
+    {
+      "id": "dell-xps-13",
+      "name": "Dell XPS 13",
+      "price": 1199.00,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "notebooks",
+      "active": true,
+      "order": 2,
+      "aliases": ["XPS 13"],
+      "variants": [
+        {
+          "name": "Silber",
+          "image": "xps-13-silver.jpg",
+          "available": 4
+        },
+        {
+          "name": "Schwarz",
+          "image": "xps-13-black.jpg",
+          "available": 6
+        }
+      ]
+    },
+    {
+      "id": "iphone-15-pro",
+      "name": "iPhone 15 Pro",
+      "price": 1199.00,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "smartphones",
+      "active": true,
+      "order": 3,
+      "aliases": ["Apple iPhone 15 Pro"],
+      "variants": [
+        {
+          "name": "128GB Titan Blau",
+          "image": "iphone-15-pro-blue-128.jpg",
+          "available": 8
+        },
+        {
+          "name": "256GB Titan Blau",
+          "image": "iphone-15-pro-blue-256.jpg",
+          "available": 5
+        },
+        {
+          "name": "128GB Titan Natur",
+          "image": "iphone-15-pro-natural-128.jpg",
+          "available": 10
+        },
+        {
+          "name": "256GB Titan Natur",
+          "image": "iphone-15-pro-natural-256.jpg",
+          "available": 7
+        },
+        {
+          "name": "512GB Titan Schwarz",
+          "image": "iphone-15-pro-black-512.jpg",
+          "available": 3
+        }
+      ]
+    },
+    {
+      "id": "samsung-galaxy-s24",
+      "name": "Samsung Galaxy S24 Ultra",
+      "price": 1399.00,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "smartphones",
+      "active": true,
+      "order": 4,
+      "aliases": ["Galaxy S24 Ultra", "S24 Ultra"],
+      "variants": [
+        {
+          "name": "256GB Schwarz",
+          "image": "s24-ultra-black.jpg",
+          "available": 12
+        },
+        {
+          "name": "512GB Grau",
+          "image": "s24-ultra-gray.jpg",
+          "available": 6
+        },
+        {
+          "name": "1TB Violett",
+          "image": "s24-ultra-violet.jpg",
+          "available": 2
+        }
+      ]
+    },
+    {
+      "id": "usb-c-kabel",
+      "name": "USB-C Ladekabel",
+      "price": 19.99,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Verpackung",
+        "display": "pro Stück"
+      },
+      "category": "zubehoer",
+      "active": true,
+      "order": 5,
+      "aliases": ["USB-C Cable", "Type-C Kabel"],
+      "variants": [
+        {
+          "name": "1m",
+          "image": "usbc-1m.jpg",
+          "available": 50
+        },
+        {
+          "name": "2m",
+          "image": "usbc-2m.jpg",
+          "available": 35
+        },
+        {
+          "name": "3m",
+          "image": "usbc-3m.jpg",
+          "available": 20
+        }
+      ]
+    },
+    {
+      "id": "lg-ultrawide-34",
+      "name": "LG UltraWide 34\" Monitor",
+      "price": 599.00,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "monitore",
+      "active": true,
+      "order": 6,
+      "aliases": ["LG 34WN80C", "UltraWide 34"],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "lg-ultrawide-34.jpg",
+          "available": 7
+        }
+      ]
+    },
+    {
+      "id": "dell-u2723de",
+      "name": "Dell UltraSharp U2723DE",
+      "price": 699.00,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "monitore",
+      "active": true,
+      "order": 7,
+      "aliases": ["UltraSharp 27"],
+      "variants": [
+        {
+          "name": "27\" 4K",
+          "image": "dell-u2723de.jpg",
+          "available": 4
+        }
+      ]
+    },
+    {
+      "id": "airpods-pro-2",
+      "name": "AirPods Pro 2. Generation",
+      "price": 279.00,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "audio",
+      "active": true,
+      "order": 8,
+      "aliases": ["AirPods Pro 2"],
+      "variants": [
+        {
+          "name": "USB-C",
+          "image": "airpods-pro-2-usbc.jpg",
+          "available": 15
+        },
+        {
+          "name": "Lightning",
+          "image": "airpods-pro-2-lightning.jpg",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "sony-wh1000xm5",
+      "name": "Sony WH-1000XM5",
+      "price": 379.00,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "audio",
+      "active": true,
+      "order": 9,
+      "aliases": ["WH1000XM5", "Sony XM5"],
+      "variants": [
+        {
+          "name": "Schwarz",
+          "image": "sony-xm5-black.jpg",
+          "available": 12
+        },
+        {
+          "name": "Silber",
+          "image": "sony-xm5-silver.jpg",
+          "available": 8
+        },
+        {
+          "name": "Midnight Blue",
+          "image": "sony-xm5-blue.jpg",
+          "available": 5
+        }
+      ]
+    },
+    {
+      "id": "samsung-ssd-t7",
+      "name": "Samsung T7 Portable SSD",
+      "price": 89.99,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "speicher",
+      "active": true,
+      "order": 10,
+      "aliases": ["T7 SSD", "Portable SSD"],
+      "variants": [
+        {
+          "name": "500GB Grau",
+          "image": "t7-500gb-gray.jpg",
+          "available": 20
+        },
+        {
+          "name": "1TB Blau",
+          "image": "t7-1tb-blue.jpg",
+          "available": 15
+        },
+        {
+          "name": "2TB Rot",
+          "image": "t7-2tb-red.jpg",
+          "available": 8
+        }
+      ]
+    },
+    {
+      "id": "sandisk-ultra-usb",
+      "name": "SanDisk Ultra USB 3.0",
+      "price": 12.99,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Blister",
+        "display": "pro Stück"
+      },
+      "category": "speicher",
+      "active": true,
+      "order": 11,
+      "aliases": ["USB Stick", "Flash Drive"],
+      "variants": [
+        {
+          "name": "32GB",
+          "image": "sandisk-32gb.jpg",
+          "available": 100
+        },
+        {
+          "name": "64GB",
+          "image": "sandisk-64gb.jpg",
+          "available": 75
+        },
+        {
+          "name": "128GB",
+          "image": "sandisk-128gb.jpg",
+          "available": 50
+        },
+        {
+          "name": "256GB",
+          "image": "sandisk-256gb.jpg",
+          "available": 25
+        }
+      ]
+    },
+    {
+      "id": "logitech-mx-master-3s",
+      "name": "Logitech MX Master 3S",
+      "price": 109.00,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "zubehoer",
+      "active": true,
+      "order": 12,
+      "aliases": ["MX Master 3S", "MX Master"],
+      "variants": [
+        {
+          "name": "Graphit",
+          "image": "mx-master-graphite.jpg",
+          "available": 18
+        },
+        {
+          "name": "Hellgrau",
+          "image": "mx-master-gray.jpg",
+          "available": 12
+        }
+      ]
+    },
+    {
+      "id": "ipad-pro-11",
+      "name": "iPad Pro 11\"",
+      "price": 949.00,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "notebooks",
+      "active": false,
+      "order": 13,
+      "aliases": ["iPad Pro"],
+      "variants": [
+        {
+          "name": "128GB WiFi",
+          "image": "ipad-pro-128.jpg",
+          "available": 0
+        },
+        {
+          "name": "256GB WiFi + Cellular",
+          "image": "ipad-pro-256-cell.jpg",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "macbook-air-m2",
+      "name": "MacBook Air M2",
+      "price": 1299.00,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "notebooks",
+      "active": true,
+      "order": 14,
+      "aliases": ["MBA M2", "Air M2"],
+      "variants": [
+        {
+          "name": "Mitternacht",
+          "image": "mba-m2-midnight.jpg",
+          "available": 6
+        },
+        {
+          "name": "Polarstern",
+          "image": "mba-m2-starlight.jpg",
+          "available": 4
+        },
+        {
+          "name": "Space Grau",
+          "image": "mba-m2-spacegray.jpg",
+          "available": 5
+        },
+        {
+          "name": "Silber",
+          "image": "mba-m2-silver.jpg",
+          "available": 3
+        }
+      ]
+    },
+    {
+      "id": "webcam-logitech-brio",
+      "name": "Logitech Brio 4K",
+      "price": 199.00,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "Box",
+        "display": "pro Stück"
+      },
+      "category": "zubehoer",
+      "active": true,
+      "order": 15,
+      "aliases": ["Brio Webcam", "4K Webcam"],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "logitech-brio.jpg",
+          "available": 22
+        }
+      ]
+    }
+  ]
+}
 
