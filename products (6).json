@@ -55,22 +55,22 @@
       "variants": [
         {
           "name": "hellgrau",
-          "image": "bilder/wendemutzen-hellgrau.jpg",
+          "image": "pictures/wendemutzen-hellgrau.jpg",
           "available": 120
         },
         {
           "name": "hellbraun",
-          "image": "bilder/wendemutzen-hellbraun.jpg",
+          "image": "pictures/wendemutzen-hellbraun.jpg",
           "available": 120
         },
         {
           "name": "dunkelgrau",
-          "image": "bilder/wendemutzen-dunkelgrau.jpg",
+          "image": "pictures/wendemutzen-dunkelgrau.jpg",
           "available": 19
         },
         {
           "name": "dunkelbraun",
-          "image": "bilder/wendemutzen-dunkelbraun.jpg",
+          "image": "pictures/wendemutzen-dunkelbraun.jpg",
           "available": 36
         },
         {
@@ -97,27 +97,27 @@
       "variants": [
         {
           "name": "dunkelgrau",
-          "image": "bilder/stulpen-dunkelgrau.jpg",
+          "image": "pictures/stulpen-dunkelgrau.jpg",
           "available": 20
         },
         {
           "name": "hellgrau",
-          "image": "bilder/stulpen-hellgrau.jpg",
+          "image": "pictures/stulpen-hellgrau.jpg",
           "available": 20
         },
         {
           "name": "wollweiß",
-          "image": "bilder/stulpen-wollweiss.jpg",
+          "image": "pictures/stulpen-wollweiss.jpg",
           "available": 20
         },
         {
           "name": "hellbraun",
-          "image": "bilder/stulpen-hellbraun.jpg",
+          "image": "pictures/stulpen-hellbraun.jpg",
           "available": 20
         },
         {
           "name": "dunkelbraun",
-          "image": "bilder/stulpen-dunkelbraun.jpg",
+          "image": "pictures/stulpen-dunkelbraun.jpg",
           "available": 20
         }
       ]
@@ -139,27 +139,27 @@
       "variants": [
         {
           "name": "hellbraun",
-          "image": "bilder/wollschals-hellbraun.jpg",
+          "image": "pictures/wollschals-hellbraun.jpg",
           "available": 50
         },
         {
           "name": "hellgrau",
-          "image": "bilder/wollschals-hellgrau.jpg",
+          "image": "pictures/wollschals-hellgrau.jpg",
           "available": 50
         },
         {
           "name": "wollweiß",
-          "image": "bilder/wollschals-wollweiss.jpg",
+          "image": "pictures/wollschals-wollweiss.jpg",
           "available": 50
         },
         {
           "name": "dunkelgrau",
-          "image": "bilder/wollschals-dunkelgrau.jpg",
+          "image": "pictures/wollschals-dunkelgrau.jpg",
           "available": 50
         },
         {
           "name": "dunkelbraun",
-          "image": "bilder/wollschals-dunkelbraun.jpg",
+          "image": "pictures/wollschals-dunkelbraun.jpg",
           "available": 30
         }
       ]
@@ -181,7 +181,7 @@
       "variants": [
         {
           "name": "naturton",
-          "image": "bilder/wollkuegelchen-500g-naturton.jpg",
+          "image": "pictures/wollkuegelchen-500g-naturton.jpg",
           "available": 100
         }
       ]
@@ -203,17 +203,17 @@
       "variants": [
         {
           "name": "blaugrau",
-          "image": "bilder/merino-star-blaugrau.jpg",
+          "image": "pictures/merino-star-blaugrau.jpg",
           "available": 50
         },
         {
           "name": "lagune",
-          "image": "bilder/merino-star-lagune.jpg",
+          "image": "pictures/merino-star-lagune.jpg",
           "available": 20
         },
         {
           "name": "mode",
-          "image": "bilder/merino-star-mode.jpg",
+          "image": "pictures/merino-star-mode.jpg",
           "available": 40
         }
       ]
@@ -235,12 +235,12 @@
       "variants": [
         {
           "name": "Standard",
-          "image": "bilder/apfelsuppe-standard.jpg",
+          "image": "pictures/apfelsuppe-standard.jpg",
           "available": 0
         },
         {
           "name": "Jakob Fischer",
-          "image": "bilder/apfelsuppe-jakob-fischer.jpg",
+          "image": "pictures/apfelsuppe-jakob-fischer.jpg",
           "available": 2
         }
       ]
@@ -310,7 +310,7 @@
       "variants": [
         {
           "name": "Größe 37-38",
-          "image": "bilder/stabilia-arbeitssocken-jeansblau-grosse-37-38.jpg",
+          "image": "pictures/stabilia-arbeitssocken-jeansblau-grosse-37-38.jpg",
           "available": 0
         }
       ]
@@ -424,12 +424,12 @@
       "variants": [
         {
           "name": "hellgrau",
-          "image": "bilder/bel-lino-hellgrau.jpg",
+          "image": "pictures/bel-lino-hellgrau.jpg",
           "available": 0
         },
         {
           "name": "rosa",
-          "image": "bilder/bel-lino-rosa.jpg",
+          "image": "pictures/bel-lino-rosa.jpg",
           "available": 0
         }
       ]
@@ -451,12 +451,12 @@
       "variants": [
         {
           "name": "Standard",
-          "image": "bilder/biskaya.jpg",
+          "image": "pictures/biskaya.jpg",
           "available": 100
         },
         {
           "name": "Neue Farbe 2",
-          "image": "bilder/biskaya-neue-farbe-2.jpg",
+          "image": "pictures/biskaya-neue-farbe-2.jpg",
           "available": 30
         }
       ]
