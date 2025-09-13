@@ -1,0 +1,665 @@
+{
+  "meta": {
+    "version": "1",
+    "ausgabedatum": "",
+    "currency": "EUR",
+    "vat_included": true
+  },
+  "categories": [
+    {
+      "id": "garn",
+      "name": "Garn",
+      "order": 1
+    },
+    {
+      "id": "sockenwolle",
+      "name": "Sockenwolle",
+      "order": 2
+    },
+    {
+      "id": "accessoires",
+      "name": "Accessoires",
+      "order": 3
+    },
+    {
+      "id": "makramee",
+      "name": "Makramee",
+      "order": 4
+    },
+    {
+      "id": "fuellmaterial",
+      "name": "Füllmaterial",
+      "order": 5
+    },
+    {
+      "id": "rohwolle",
+      "name": "Rohwolle",
+      "order": 6
+    }
+  ],
+  "products": [
+    {
+      "id": "wendemutzen",
+      "name": "Wendemützen",
+      "price": 18.5,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": null,
+        "display": "pro Stück"
+      },
+      "category": "accessoires",
+      "active": true,
+      "order": 1,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "hellgrau",
+          "image": "bilder/wendemutzen-hellgrau.jpg",
+          "available": 120
+        },
+        {
+          "name": "hellbraun",
+          "image": "bilder/wendemutzen-hellbraun.jpg",
+          "available": 120
+        },
+        {
+          "name": "dunkelgrau",
+          "image": "bilder/wendemutzen-dunkelgrau.jpg",
+          "available": 19
+        },
+        {
+          "name": "dunkelbraun",
+          "image": "bilder/wendemutzen-dunkelbraun.jpg",
+          "available": 36
+        },
+        {
+          "name": "Neue Farbe 5",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "stulpen",
+      "name": "Stulpen",
+      "price": 13.5,
+      "unit": {
+        "quantity": 1,
+        "uom": "Paar",
+        "packaging": "null",
+        "display": "pro Paar"
+      },
+      "category": "accessoires",
+      "active": true,
+      "order": 1,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "dunkelgrau",
+          "image": "bilder/stulpen-dunkelgrau.jpg",
+          "available": 20
+        },
+        {
+          "name": "hellgrau",
+          "image": "bilder/stulpen-hellgrau.jpg",
+          "available": 20
+        },
+        {
+          "name": "wollweiß",
+          "image": "bilder/stulpen-wollweiss.jpg",
+          "available": 20
+        },
+        {
+          "name": "hellbraun",
+          "image": "bilder/stulpen-hellbraun.jpg",
+          "available": 20
+        },
+        {
+          "name": "dunkelbraun",
+          "image": "bilder/stulpen-dunkelbraun.jpg",
+          "available": 20
+        }
+      ]
+    },
+    {
+      "id": "wollschals",
+      "name": "Wollschals",
+      "price": 22,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": null,
+        "display": "pro Stück"
+      },
+      "category": "accessoires",
+      "active": true,
+      "order": 2,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "hellbraun",
+          "image": "bilder/wollschals-hellbraun.jpg",
+          "available": 50
+        },
+        {
+          "name": "hellgrau",
+          "image": "bilder/wollschals-hellgrau.jpg",
+          "available": 50
+        },
+        {
+          "name": "wollweiß",
+          "image": "bilder/wollschals-wollweiss.jpg",
+          "available": 50
+        },
+        {
+          "name": "dunkelgrau",
+          "image": "bilder/wollschals-dunkelgrau.jpg",
+          "available": 50
+        },
+        {
+          "name": "dunkelbraun",
+          "image": "bilder/wollschals-dunkelbraun.jpg",
+          "available": 30
+        }
+      ]
+    },
+    {
+      "id": "wollkuegelchen-500g",
+      "name": "Wollkügelchen",
+      "price": 8.5,
+      "unit": {
+        "quantity": 500,
+        "uom": "g",
+        "packaging": "null",
+        "display": "pro 500g"
+      },
+      "category": "fuellmaterial",
+      "active": true,
+      "order": 6,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "naturton",
+          "image": "bilder/wollkuegelchen-500g-naturton.jpg",
+          "available": 100
+        }
+      ]
+    },
+    {
+      "id": "merino-star",
+      "name": "Merino Star",
+      "price": 3.5,
+      "unit": {
+        "quantity": 1,
+        "uom": "50g",
+        "packaging": "Knuel",
+        "display": "pro Stück"
+      },
+      "category": "garn",
+      "active": true,
+      "order": 7,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "blaugrau",
+          "image": "bilder/merino-star-blaugrau.jpg",
+          "available": 50
+        },
+        {
+          "name": "lagune",
+          "image": "bilder/merino-star-lagune.jpg",
+          "available": 20
+        },
+        {
+          "name": "mode",
+          "image": "bilder/merino-star-mode.jpg",
+          "available": 40
+        }
+      ]
+    },
+    {
+      "id": "apfelsuppe",
+      "name": "Apfelsuppe",
+      "price": 0,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": null,
+        "display": "pro Stück"
+      },
+      "category": "",
+      "active": true,
+      "order": 8,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "bilder/apfelsuppe-standard.jpg",
+          "available": 0
+        },
+        {
+          "name": "Jakob Fischer",
+          "image": "bilder/apfelsuppe-jakob-fischer.jpg",
+          "available": 2
+        }
+      ]
+    },
+    {
+      "id": "stabilia-sockenwolle",
+      "name": "Stabilia Sockenwolle",
+      "price": 1.5,
+      "unit": {
+        "quantity": 50,
+        "uom": "g",
+        "packaging": "Knäuel",
+        "display": "pro 50g-Knäuel"
+      },
+      "category": "sockenwolle",
+      "active": true,
+      "order": 10,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "wollsocken-mit-seide",
+      "name": "Wollsocken mit Seide",
+      "price": 10,
+      "unit": {
+        "quantity": 1,
+        "uom": "Paar",
+        "packaging": "null",
+        "display": "pro Paar"
+      },
+      "category": "accessoires",
+      "active": true,
+      "order": 10,
+      "aliases": [
+        "Wollsocken + Seide"
+      ],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "stabilia-arbeitssocken-jeansblau",
+      "name": "Stabilia Arbeitssocken jeansblau",
+      "price": 5.85,
+      "unit": {
+        "quantity": 1,
+        "uom": "Paar",
+        "packaging": "null",
+        "display": "pro Paar"
+      },
+      "category": "accessoires",
+      "active": true,
+      "order": 10,
+      "aliases": [
+        "Stabilia Socken"
+      ],
+      "variants": [
+        {
+          "name": "Größe 37-38",
+          "image": "bilder/stabilia-arbeitssocken-jeansblau-grosse-37-38.jpg",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "sockenwolle-mit-seide",
+      "name": "Sockenwolle mit Seide",
+      "price": 3.5,
+      "unit": {
+        "quantity": 50,
+        "uom": "g",
+        "packaging": "Knäuel",
+        "display": "pro 50g-Knäuel"
+      },
+      "category": "sockenwolle",
+      "active": false,
+      "order": 12,
+      "aliases": [
+        "Sockenwolle + Seide"
+      ],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "lama-sockenwolle",
+      "name": "Lama Sockenwolle",
+      "price": 4,
+      "unit": {
+        "quantity": 50,
+        "uom": "g",
+        "packaging": "Knäuel",
+        "display": "pro 50g-Knäuel"
+      },
+      "category": "sockenwolle",
+      "active": true,
+      "order": 13,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "lammwoll-muetze",
+      "name": "Lammwoll Mütze",
+      "price": 10,
+      "unit": {
+        "quantity": 1,
+        "uom": "Stück",
+        "packaging": "null",
+        "display": "pro Stück"
+      },
+      "category": "accessoires",
+      "active": true,
+      "order": 17,
+      "aliases": [
+        "Lammwollmütze"
+      ],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "soft-cotton",
+      "name": "Soft Cotton",
+      "price": 1.5,
+      "unit": {
+        "quantity": 50,
+        "uom": "g",
+        "packaging": "Knäuel",
+        "display": "pro 50g-Knäuel"
+      },
+      "category": "garn",
+      "active": true,
+      "order": 20,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "bel-lino",
+      "name": "Bel Lino",
+      "price": 2.2,
+      "unit": {
+        "quantity": 50,
+        "uom": "g",
+        "packaging": "Knäuel",
+        "display": "pro 50g-Knäuel"
+      },
+      "category": "garn",
+      "active": true,
+      "order": 20,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "hellgrau",
+          "image": "bilder/bel-lino-hellgrau.jpg",
+          "available": 0
+        },
+        {
+          "name": "rosa",
+          "image": "bilder/bel-lino-rosa.jpg",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "biskaya",
+      "name": "Biskaya",
+      "price": 2.2,
+      "unit": {
+        "quantity": 50,
+        "uom": "g",
+        "packaging": "Knäuel",
+        "display": "pro 50g-Knäuel"
+      },
+      "category": "garn",
+      "active": true,
+      "order": 20,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "bilder/biskaya.jpg",
+          "available": 100
+        },
+        {
+          "name": "Neue Farbe 2",
+          "image": "bilder/biskaya-neue-farbe-2.jpg",
+          "available": 30
+        }
+      ]
+    },
+    {
+      "id": "solaire",
+      "name": "Solaire",
+      "price": 2.2,
+      "unit": {
+        "quantity": 50,
+        "uom": "g",
+        "packaging": "Knäuel",
+        "display": "pro 50g-Knäuel"
+      },
+      "category": "garn",
+      "active": true,
+      "order": 20,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "violett",
+          "image": "",
+          "available": 50
+        }
+      ]
+    },
+    {
+      "id": "cotton-star",
+      "name": "Cotton Star",
+      "price": 2,
+      "unit": {
+        "quantity": 50,
+        "uom": "g",
+        "packaging": "Knäuel",
+        "display": "pro 50g-Knäuel"
+      },
+      "category": "garn",
+      "active": true,
+      "order": 20,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "angora-elegance",
+      "name": "Angora élegance",
+      "price": 2,
+      "unit": {
+        "quantity": 20,
+        "uom": "g",
+        "packaging": "Knäuel",
+        "display": "pro 20g-Knäuel"
+      },
+      "category": "garn",
+      "active": true,
+      "order": 20,
+      "aliases": [
+        "Angora elegance"
+      ],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "lamasocken",
+      "name": "Lamasocken",
+      "price": 12.2,
+      "unit": {
+        "quantity": 1,
+        "uom": "Paar",
+        "packaging": "null",
+        "display": "pro Paar"
+      },
+      "category": "accessoires",
+      "active": true,
+      "order": 23,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "makramee-3mm",
+      "name": "Makramee 3mm",
+      "price": 1.5,
+      "unit": {
+        "quantity": 100,
+        "uom": "g",
+        "packaging": "null",
+        "display": "pro 100g"
+      },
+      "category": "makramee",
+      "active": true,
+      "order": 25,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "makramee-5mm",
+      "name": "Makramee 5mm",
+      "price": 2.5,
+      "unit": {
+        "quantity": 100,
+        "uom": "g",
+        "packaging": "null",
+        "display": "pro 100g"
+      },
+      "category": "makramee",
+      "active": true,
+      "order": 26,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "kardenband",
+      "name": "Kardenband",
+      "price": 15,
+      "unit": {
+        "quantity": 500,
+        "uom": "g",
+        "packaging": "null",
+        "display": "pro 500g"
+      },
+      "category": "rohwolle",
+      "active": true,
+      "order": 27,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "susiwool",
+      "name": "Susiwool",
+      "price": 1,
+      "unit": {
+        "quantity": 50,
+        "uom": "g",
+        "packaging": "Knäuel",
+        "display": "pro 50g-Knäuel"
+      },
+      "category": "garn",
+      "active": true,
+      "order": 30,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    },
+    {
+      "id": "susiline",
+      "name": "Susiline",
+      "price": 1,
+      "unit": {
+        "quantity": 50,
+        "uom": "g",
+        "packaging": "Knäuel",
+        "display": "pro 50g-Knäuel"
+      },
+      "category": "garn",
+      "active": true,
+      "order": 30,
+      "aliases": [],
+      "variants": [
+        {
+          "name": "Standard",
+          "image": "",
+          "available": 0
+        }
+      ]
+    }
+  ]
+}
